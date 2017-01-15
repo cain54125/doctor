@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>
+		call
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="叫號未到">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+		<meta name="author" content="Hege Refsnes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="jquery.timers-1.1.2.js"></script>
+		<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script language="JavaScript">
+		var XHR = null; 
+		
+		$(document).on("focus","#test",function(){
+			$(document).on("focus",".w3-coll",
+			function(){
+				$.post("http://192.168.43.112/phoneGap/test2.PHP",
+				{
+					n:"1"
+				},
+				function(data,status){
+					
+				});
+			});
+		});                         
+		
+		$(document).on("pagecreate","#pageone",function(){
+		  $(document).on("swipeleft",".w3-coll",function(){
+			//$(this).hide();
+			alert("叫號未到");
+		  });                       
+		});
+		
+		$(document).on("pagecreate","#pageone",function(){
+		  $(document).on("swiperight",".w3-coll",function(){ 
+			//$(this).hide();
+			alert("報到成功 ");
+		  });  
+		});
+		var $a=0;
+		
+		$(document).ready(function(){
+			$('body').everyTime('1s','A',function(){
+				$.post("http://192.168.43.112/phoneGap/test2.PHP",
+				{
+					n:"0"
+				},
+				function(data,status){
+					document.getElementById("pageone").innerHTML=data;
+				});
+			});
+		});	
+		
+		</script>
+		
+	</head>
+
+<body>
+   
+	<br>
+    <div data-role="page" id="pageone" >
+		<div class="w3-coll">
+			<div><br>
+				<h3>
+					<a href="make.html" class="w3-left" target="b">				
+					</a>
+					<a href="uncall.html" class="w3-right" target="b">			
+					</a>
+				</h3>
+			</div>
+		</div>
+    </div>
+</body>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>掃描QRcode</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--PhoneGap APIs-->
+<script src="cordova.js"></script>
+<!--這裡是jquery.mobile的 三排 要下載 -->
+	<link rel=stylesheet href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.css">
+<!--這是jquery 1.8 -->
+	<script src="jquery.mobile-1.4.5/jquery.js"></script>
+	<script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.js"></script>
+<script language="JavaScript">
+/*
+alert("We got a barcode\n" +
+"Result: " + result.text (內容) + "\n" +
+"Format: " + result.format (條碼型態) + "\n" +
+"Cancelled: " + result.cancelled(是否取消) );*/
+function openScanner() {
+  cordova.plugins.barcodeScanner.scan(
+      function (result) {
+		 if(!result.cancelle){	//讀到要幹嘛
+			$.post( "http://120.105.161.191/我們的專題/XXX.PHP",{text: result.text}, function( data ) {	
+			//假設要傳給"我們的專題/XXX.PHP"然後接收 data 
+				//PHP的部分要用POST接收 
+				//	$text = $_POST["text"]; 像這樣
+			$( "#QR" ).html( data );	//data 加到id=QR 的div //jquery的語法
+			document.getElementById("QR").innerHTML=data;	//同上不過是html的語法
+			});
+		}/*else{		//沒讀到
+		
+		}*/	
+      },
+      function (error) {
+          alert("Scanning failed: " + error);
+      },
+      {
+          preferFrontCamera : true, // iOS and Android
+          showFlipCameraButton : true, // iOS and Android
+          showTorchButton : true, // iOS and Android
+          torchOn: true, // Android, launch with the torch switched on (if available)
+          prompt : "Place a barcode inside the scan area", // Android
+          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+          orientation : "portrait", // Android only (portrait|landscape), default unset so it rotates with the device
+          disableAnimations : true // iOS
+      }
+   );
+ }
+ function(){
+	
+ }
+</script>
+</head>
+<body>
+<script type="text/javascript" src="cordova.js"></script>
+<button onClick="openScanner()">掃描QRcode</button>
+<div id="QR"></div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>
+		Use
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta charset="使用狀況">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+		<meta name="author" content="Hege Refsnes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="w3.css">
+		<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="jquery.timers-1.1.2.js"></script>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script language="JavaScript">
+			var a1=20;
+			var a2=20;
+			var a3=15;
+			var a=0;
+		$(document).ready(function(){
+			$('body').everyTime('1s','A',function(){
+			$('#a1').html(a1--);
+			});
+			$('body').everyTime('1s','B',function(){
+			$('#a2').html(a2--);
+			});
+			$('body').everyTime('1s','C',function(){
+			$('#a3').html(a3--);
+			});
+		});	
+		
+		</script>
+	</head>
+
+<body>
+    <br>
+    <div data-role="page" id="pageone" class=" w3-margin-bottom w3-top ">
+		<div class="w3-coll">
+		<div><br>
+			<h3 class="w3-container ">
+				<a href="make.html" class="w3-left" target="b">				
+				頸椎牽引20
+				</a>
+				<div class="w3-right" id="a1" target="b">
+21				
+				</div>
+			</h3>
+		</div>
+		</div>
+	
+		
+		<div class="w3-coll">
+		<div><br>
+			<h3 class="w3-container ">
+				<a href="make.html" class="w3-left" target="b">				
+				腰椎牽引20
+				</a>
+				<div class="w3-right" id="a2"  target="b">	
+				21
+				</div>
+			</h3>
+		</div>
+		</div>
+		
+		<div class="w3-coll">
+		<div><br>
+			<h3 class="w3-container ">
+				<a href="make.html" class="w3-left" target="b">				
+				熱敷包15
+				</a>
+				<div class="w3-right"  id="a3" target="b">	
+				16
+				</div>
+			</h3>
+		</div>
+		</div>
+	
+		
+    </div>
+</body>
